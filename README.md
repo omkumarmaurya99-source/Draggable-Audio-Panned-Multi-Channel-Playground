@@ -185,10 +185,6 @@ Through building this project, I gained a deep understanding of:
 **Name:** Om Kumar Maurya  
 **Program:** B.Tech CSE (First Year)  
 
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
 ## 🙏 Acknowledgements
 
 - **MDN Web Docs:** For the extensive and detailed documentation on the Web Audio API.
