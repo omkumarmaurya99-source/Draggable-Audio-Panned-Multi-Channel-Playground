@@ -47,15 +47,18 @@ const LISTENER_POSITION = { x: 50, y: 50 }; // Center coordinates
 const PROXIMITY_THRESHOLD = 12; // Collision distance radius in percent units
 
 export default function App() {
-  const [sources, setSources] = useState([]);
-  const [selectedSourceId, setSelectedSourceId] = useState(null);
-  const [snapping, setSnapping] = useState(false);
-  const [attenuationModel, setAttenuationModel] = useState('linear');
-  const [ctxState, setCtxState] = useState('uninitialized');
-  const [sampleRate, setSampleRate] = useState(0);
-  const [collisions, setCollisions] = useState([]);
-  const [masterMuted, setMasterMuted] = useState(false);
-  const [latencyMs, setLatencyMs] = useState({ base: 0, output: 0, total: 0 });
+  // --- React State Management ---
+  // useState hooks store application data that, when changed, triggers a UI re-render.
+  const [sources, setSources] = useState([]); // Array of all audio source nodes on the stage
+  const [selectedSourceId, setSelectedSourceId] = useState(null); // The currently active node for editing
+  const [snapping, setSnapping] = useState(false); // Toggle for grid snapping during drag
+  const [attenuationModel, setAttenuationModel] = useState('linear'); // Math model for volume drop-off
+  const [ctxState, setCtxState] = useState('uninitialized'); // Web Audio API Context status
+  const [sampleRate, setSampleRate] = useState(0); // Hardware sample rate (e.g., 44100Hz)
+  const [collisions, setCollisions] = useState([]); // Array tracking overlapping nodes
+  const [masterMuted, setMasterMuted] = useState(false); // Global mute state
+  const [latencyMs, setLatencyMs] = useState({ base: 0, output: 0, total: 0 }); // Audio processing delay
+
 
   // Load configuration from localStorage on mount
   useEffect(() => {
@@ -161,11 +164,14 @@ export default function App() {
 
   // Spatial math calculator: Distance, Attenuation, Stereo Panning, Y→Frequency
   const updateSpatialMath = (src, x, y, model = attenuationModel) => {
+    // 1. Calculate Euclidean Distance from Listener (at LISTENER_POSITION)
+    // Formula: Distance = √((x2 - x1)² + (y2 - y1)²)
     const dx = x - LISTENER_POSITION.x;
     const dy = y - LISTENER_POSITION.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
     
-    // Attenuation calculation (max distance is center to corner = sqrt(50^2 + 50^2) = 70.71)
+    // 2. Attenuation calculation (Volume drop-off based on distance)
+    // Max distance is from center to a corner: sqrt(50^2 + 50^2) ≈ 70.71
     const maxDistance = 70.71;
     let attenuation = 0;
     
@@ -176,8 +182,9 @@ export default function App() {
       attenuation = Math.max(0, Math.pow(1 - distance / maxDistance, 2));
     }
 
-    // Pan calculation: left is negative, right is positive.
-    // Normalized horizontal offset: range [-50, 50] mapped to [-1.0, 1.0]
+    // 3. Stereo Pan Calculation
+    // Pan calculation: left ear is -1, right ear is 1. Center is 0.
+    // Normalized horizontal offset: dx range [-50, 50] is mapped to [-1.0, 1.0]
     const pan = Math.max(-1, Math.min(1, dx / 50));
 
     // Y→Frequency mapping for oscillator sources
@@ -248,6 +255,7 @@ export default function App() {
   }, [attenuationModel]);
 
   // Handler: When a node is dragged on the soundstage
+  // This updates React State, which updates the UI, AND updates the Web Audio Nodes
   const handleNodeDrag = (id, x, y) => {
     let targetSrc = null;
     const updated = sources.map(s => {

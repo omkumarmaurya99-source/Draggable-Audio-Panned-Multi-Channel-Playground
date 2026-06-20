@@ -80,6 +80,8 @@ export default function SoundStage({
   const dragInfoRef = useRef({ isDragging: false, nodeId: null });
 
   // Handle Canvas Resizing and Drawing
+  // useEffect runs this code after the component mounts. It sets up an observer
+  // to keep the canvas resolution matching its physical size on the screen.
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -210,6 +212,8 @@ export default function SoundStage({
   };
 
   // Drag Event Handlers
+  // pointerdown, pointermove, pointerup are used instead of standard mouse events
+  // because pointer events support both mouse and touch interfaces seamlessly.
   const handlePointerDown = (e, id) => {
     e.preventDefault();
     if (id === 'listener') return; // Fixed node

@@ -31,6 +31,7 @@ const WaveformVisualizer = ({ sourceId, isPlaying, isMuted, type }) => {
       ctx.lineWidth = 2;
       ctx.beginPath();
 
+      // The buffer contains time-domain data (the actual wave shape) from the Web Audio API AnalyserNode
       const buffer = engine.getWaveform(sourceId);
       
       if (!buffer || !isPlaying || isMuted) {
@@ -61,8 +62,11 @@ const WaveformVisualizer = ({ sourceId, isPlaying, isMuted, type }) => {
       ctx.stroke();
     };
 
+    // Start the animation loop when the component mounts
     drawWave();
 
+    // Cleanup function: stop the animation when the component unmounts
+    // This prevents memory leaks and performance issues.
     return () => {
       if (animFrameId.current) {
         cancelAnimationFrame(animFrameId.current);
