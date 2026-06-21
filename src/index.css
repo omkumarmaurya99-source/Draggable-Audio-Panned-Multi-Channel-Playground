@@ -31,9 +31,9 @@
   --accent-warning-glow: rgba(255, 157, 0, 0.5);
   
   /* Fonts */
-  --font-family: 'Inter', system-ui, sans-serif;
-  --font-header: 'Chakra Petch', sans-serif;
-  --font-lcd: 'Share Tech Mono', monospace;
+  --font-family: 'Times New Roman', Times, serif;
+  --font-header: 'Times New Roman', Times, serif;
+  --font-lcd: 'Times New Roman', Times, serif;
   
   /* Hardware Shadows */
   --shadow-lg: 0 20px 40px -10px rgba(0,0,0,0.8), 0 5px 15px rgba(0,0,0,0.9);
@@ -92,7 +92,7 @@ body {
 
 .header-title-section h1 {
   font-family: var(--font-header);
-  font-size: 1.8rem;
+  font-size: 12pt !important;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -103,7 +103,7 @@ body {
 .header-title-section p {
   font-family: var(--font-lcd);
   color: var(--accent-cyan);
-  font-size: 0.85rem;
+  font-size: 12pt !important;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-top: 4px;
@@ -116,7 +116,7 @@ body {
   padding: 0.5rem 1.25rem;
   border-radius: 4px;
   font-family: var(--font-header);
-  font-size: 0.9rem;
+  font-size: 12pt !important;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -191,7 +191,7 @@ body {
 
 .panel-header h2 {
   font-family: var(--font-header);
-  font-size: 1.1rem;
+  font-size: 12pt !important;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -323,7 +323,7 @@ body {
   padding: 4px 8px;
   border-radius: 4px;
   font-family: var(--font-lcd);
-  font-size: 0.75rem;
+  font-size: 12pt !important;
   letter-spacing: 0.05em;
   white-space: nowrap;
   pointer-events: none;
@@ -407,7 +407,7 @@ body {
   gap: 0.5rem;
   padding: 0.6rem 1.2rem;
   font-family: var(--font-header);
-  font-size: 0.85rem;
+  font-size: 12pt !important;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -499,7 +499,7 @@ body {
   padding: 3rem;
   color: #3f3f46;
   font-family: var(--font-header);
-  font-size: 1.2rem;
+  font-size: 12pt !important;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   border: 2px dashed #27272a;
@@ -539,7 +539,7 @@ body {
 }
 
 .channel-name {
-  font-size: 0.9rem;
+  font-size: 12pt !important;
   font-weight: 700;
   color: #fff;
   white-space: nowrap;
@@ -549,7 +549,7 @@ body {
 
 .channel-type-label {
   font-family: var(--font-lcd);
-  font-size: 0.7rem;
+  font-size: 12pt !important;
   color: var(--accent-cyan);
   text-transform: uppercase;
   margin-top: 2px;
@@ -575,7 +575,7 @@ body {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-header);
-  font-size: 0.7rem;
+  font-size: 12pt !important;
   color: #a1a1aa;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -584,7 +584,7 @@ body {
 .slider-value {
   font-family: var(--font-lcd);
   color: var(--accent-green);
-  font-size: 0.8rem;
+  font-size: 12pt !important;
   text-shadow: 0 0 5px var(--accent-green-glow);
 }
 
@@ -724,7 +724,7 @@ input[type=range]::-webkit-slider-thumb:active {
 
 .telemetry-label {
   font-family: var(--font-header);
-  font-size: 0.6rem;
+  font-size: 12pt !important;
   color: #71717a;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -732,7 +732,7 @@ input[type=range]::-webkit-slider-thumb:active {
 
 .telemetry-value {
   font-family: var(--font-lcd);
-  font-size: 1.1rem;
+  font-size: 12pt !important;
   color: var(--accent-cyan);
   text-shadow: 0 0 5px var(--accent-cyan-glow);
   margin-top: 2px;
@@ -745,7 +745,7 @@ input[type=range]::-webkit-slider-thumb:active {
   gap: 0.2rem;
   margin-top: 0.75rem;
   font-family: var(--font-lcd);
-  font-size: 0.75rem;
+  font-size: 12pt !important;
   max-height: 120px;
   overflow-y: auto;
   background: #000;
@@ -767,7 +767,7 @@ input[type=range]::-webkit-slider-thumb:active {
   border-bottom: 1px solid #27272a;
   margin-bottom: 4px;
   font-family: var(--font-header);
-  font-size: 0.65rem;
+  font-size: 12pt !important;
   letter-spacing: 0.05em;
 }
 
@@ -800,7 +800,7 @@ input[type=range]::-webkit-slider-thumb:active {
 
 .source-editor-header {
   font-family: var(--font-header);
-  font-size: 0.9rem;
+  font-size: 12pt !important;
   text-transform: uppercase;
   color: #fff;
   border-bottom: 1px solid #27272a;
@@ -824,7 +824,7 @@ input[type=range]::-webkit-slider-thumb:active {
 
 .editor-field label {
   font-family: var(--font-header);
-  font-size: 0.65rem;
+  font-size: 12pt !important;
   color: #a1a1aa;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -837,7 +837,7 @@ input[type=range]::-webkit-slider-thumb:active {
   padding: 0.4rem 0.6rem;
   color: var(--accent-cyan);
   font-family: var(--font-lcd);
-  font-size: 0.85rem;
+  font-size: 12pt !important;
   outline: none;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
 }
@@ -866,4 +866,15 @@ input[type=range]::-webkit-slider-thumb:active {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #52525b;
+}
+
+/* Global Typography Override to satisfy formatting requirement */
+html, body, div, span, h1, h2, h3, p, label, select, input, button, table, td, th, strong, em, i, b {
+  font-family: 'Times New Roman', Times, serif !important;
+  font-size: 12pt !important;
+}
+
+/* Ensure Icons don't inherit times new roman or get messed up if they use icon fonts, though lucide uses svg */
+svg {
+  font-family: inherit !important;
 }
